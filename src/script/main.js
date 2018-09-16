@@ -47,12 +47,14 @@
             const td = document.createElement("td");
             td.innerHTML="&nbsp;";
             td.style.backgroundColor = colorSet[key];
-            td.onclick = ((_key) => {
+            const getColor = ((_key) => {
                 return (e) => {
                     currentColor = colorSet[_key];
+                    return false;
                 }
             })(key);
-            td.oncontextmenu = (e) => false;
+            td.onclick = getColor;
+            td.oncontextmenu = getColor;
             tr.appendChild(td);
         }
         tbody.appendChild(tr);
