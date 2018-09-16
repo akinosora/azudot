@@ -4,6 +4,7 @@
     const WIDTH = 37;
     
     const myCanvas = document.createElement("div");
+    const myPalette = document.createElement("div");
 
     const colorSet = {
         _: "#bdaead", // default
@@ -38,6 +39,26 @@
         }
         return tbody;
     }
+    const createPaletteTbody = () => {
+        const tbody = document.createElement("tbody");
+        const tr = document.createElement("tr");
+        for(key in colorSet){
+            if (colorSet[key] === colorSet._) continue;
+            console.log(key + ": " +  colorSet[key]);
+            const td = document.createElement("td");
+            td.innerHTML="&nbsp;";
+            td.style.backgroundColor = colorSet[key];
+            td.onclick = ((_key) => {
+                return (e) => {
+                    currentColor = colorSet[_key];
+                }
+            })(key);
+            td.oncontextmenu = (e) => false;
+            tr.appendChild(td);
+        }
+        tbody.appendChild(tr);
+        return tbody;
+    }
 
     document.addEventListener('DOMContentLoaded', function() {
         Array.from(document.getElementsByTagName("my-canvas"), elem => {
@@ -47,6 +68,12 @@
             elem.appendChild(myCanvas)
                 .appendChild(canvasTable)
                 .appendChild(createCanvasTbody());
+            // draw palette
+            const paletteTable = document.createElement("table");
+            paletteTable.onselectstart = () => false;
+            elem.appendChild(myPalette)
+                .appendChild(paletteTable)
+                .appendChild(createPaletteTbody());
         });
     });
     
