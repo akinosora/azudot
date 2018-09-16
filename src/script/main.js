@@ -44,7 +44,6 @@
         const tr = document.createElement("tr");
         for(key in colorSet){
             if (colorSet[key] === colorSet._) continue;
-            console.log(key + ": " +  colorSet[key]);
             const td = document.createElement("td");
             td.innerHTML="&nbsp;";
             td.style.backgroundColor = colorSet[key];
