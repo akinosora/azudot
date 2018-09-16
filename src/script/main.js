@@ -63,6 +63,9 @@
 
     document.addEventListener('DOMContentLoaded', function() {
         Array.from(document.getElementsByTagName("my-canvas"), elem => {
+            const canvasHint = document.createElement("div");
+            canvasHint.innerText = "左クリックで描画、右クリックで消しゴムだよ！";
+            elem.appendChild(canvasHint);
             // draw canvas
             const canvasTable = document.createElement("table");
             canvasTable.style.width = 16 * WIDTH + "px";
@@ -77,6 +80,9 @@
             elem.appendChild(myPalette)
                 .appendChild(paletteTable)
                 .appendChild(createPaletteTbody());
+            const paletteHint = document.createElement("div");
+            paletteHint.innerText = "パレットを右/左クリックで色選択だよ！";
+            myPalette.appendChild(paletteHint);
         });
     });
     
