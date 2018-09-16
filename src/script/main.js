@@ -64,6 +64,8 @@
         Array.from(document.getElementsByTagName("my-canvas"), elem => {
             // draw canvas
             const canvasTable = document.createElement("table");
+            canvasTable.style.width = 16 * WIDTH + "px";
+            canvasTable.style["table-layout"] = "fixed";
             canvasTable.onselectstart = () => false;
             elem.appendChild(myCanvas)
                 .appendChild(canvasTable)
