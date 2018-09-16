@@ -1,3 +1,5 @@
+"use strict";
+
 (function(){
     // 37x22
     const HEIGHT = 22;
@@ -42,17 +44,12 @@
     const createPaletteTbody = () => {
         const tbody = document.createElement("tbody");
         const tr = document.createElement("tr");
-        for(key in colorSet){
+        for(const key in colorSet){
             if (colorSet[key] === colorSet._) continue;
             const td = document.createElement("td");
             td.innerHTML="&nbsp;";
             td.style.backgroundColor = colorSet[key];
-            const getColor = ((_key) => {
-                return (e) => {
-                    currentColor = colorSet[_key];
-                    return false;
-                }
-            })(key);
+            const getColor = (e) => (currentColor = colorSet[key]) && false;
             td.onclick = getColor;
             td.oncontextmenu = getColor;
             tr.appendChild(td);
